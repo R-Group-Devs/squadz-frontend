@@ -1,0 +1,122 @@
+/* Fonts */
+
+@font-face {
+  font-family: 'PicNic';
+  src: local('PicNic'), url(./assets/fonts/PicNic/PicNic-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Karrik';
+  src: local('Karrik'), url(./assets/fonts/Karrik/Karrik-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Karrik';
+  font-style: italic;
+  src: local('Karrik'), url(./assets/fonts/Karrik/Karrik-Italic.woff2) format('woff2');
+}
+
+.is-PicNic {
+  font-family: PicNic;
+}
+
+.is-Karrik {
+  font-family: Karrik !important;
+}
+
+/* Colors */
+
+.has-pink-text {
+  color: #E086D3;
+}
+
+.has-green-text {
+  color: #2FBF71;
+}
+
+/* Headings */
+
+.title.main {
+  font-size: 9em;
+  margin-bottom: 2rem;
+}
+
+.subtitle.main {
+  margin-bottom: 0;
+}
+
+/* Buttons */
+
+.button-container {
+  font-family: Karrik;
+}
+
+.button-image:hover, .button-text:hover {
+  cursor: pointer;
+}
+
+.in-ellipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+/* Levels */
+
+.level.centered {
+  justify-content: center;
+}
+
+.centered > .level-item {
+  flex-grow: 0 !important; 
+}
+
+/* Forms */
+
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+input::placeholder {
+  color: lightgray;
+}
+
+.dropdown-trigger {
+  min-width: 9rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-bottom: 1px solid black;
+}
+
+.dropdown-menu {
+  min-width: 9rem;
+}
+
+.dropdown-content {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+.dropdown-item {
+  padding: 0.25rem 0.5rem 0 0.5rem;
+}
+
+.dropdown-item:hover {
+  border-bottom: 1px solid black;
+}
+
+/* Generic flexbox stuff */
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.space-between {
+  justify-content: space-between;
+}
