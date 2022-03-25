@@ -24,14 +24,33 @@
   font-family: Karrik !important;
 }
 
-/* Colors */
-
-.has-pink-text {
-  color: #E086D3;
+.is-size-7 {
+  font-size: 0.85rem;
 }
 
-.has-green-text {
-  color: #2FBF71;
+/* Global */
+
+.app {
+  font-family: Karrik;
+  color: black;
+}
+
+#top {
+  min-height: 85vh;
+}
+
+/* Colors */
+
+.has-text-pink {
+  color: #E086D3 !important;
+}
+
+.has-text-green {
+  color: #2FBF71 !important;
+}
+
+.has-text-red {
+  color: #DE1A1A !important;
 }
 
 /* Headings */
@@ -39,10 +58,6 @@
 .title.main {
   font-size: 9em;
   margin-bottom: 2rem;
-}
-
-.subtitle.main {
-  margin-bottom: 0;
 }
 
 /* Buttons */
@@ -73,12 +88,40 @@
   flex-grow: 0 !important; 
 }
 
+.level-item-left {
+  justify-content: left;
+}
+
+/* Footer */
+
+.footer {
+  margin-top: 2rem;
+  padding: 2rem 2rem 2rem;
+  background-color: white;
+}
+
 /* Forms */
+
+.label {
+  font-weight: normal;
+  margin-bottom: 0;
+  font-family: Karrik;
+  color: black;
+  width: 40vw;
+}
+
+.label:not(:last-child) {
+  margin-bottom: 0;
+}
 
 input {
   border: none;
   border-bottom: 1px solid black;
   outline: none;
+  font-family: Karrik;
+  font-size: 1rem;
+  color: black;
+  height: 25px;
 }
 
 input::placeholder {
@@ -115,6 +158,7 @@ input::placeholder {
 .row {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .space-between {
