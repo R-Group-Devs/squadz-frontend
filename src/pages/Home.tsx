@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom'
+import { useAccount } from 'wagmi'
 
 import blob from "../public/images/magicpattern-blob-1647906613950.png"
 import Button from "../components/Button"
-import ViewSquadzForm from "../components/ViewSquadzForm"
+import ViewSquadsForm from "../components/ViewSquadsForm"
 
 export default () => {
   const navigate = useNavigate()
+  const [{ data },] = useAccount()
 
   return (
     <section className="hero is-fullheight">
@@ -13,7 +15,7 @@ export default () => {
         <div className="container has-text-centered">
           <div className="block">
             <h1 className="title is-PicNic is-1 main has-text-green">SQUADZ</h1>
-            <h2 className="subtitle is-Karrik is-italic is-4 main has-text-green">composable communities</h2>
+            <h2 className="subtitle is-Karrik is-italic is-4 has-text-green">composable communities</h2>
             <img className="m-3" src={blob} alt="Gradient blob" width={280} height={280} />
           </div>
           <div className="block m-4 mb-5">
@@ -26,7 +28,7 @@ export default () => {
             />
           </div>
           <div className="block has-text-centered">
-            <ViewSquadzForm />
+            <ViewSquadsForm defaultAddress={data?.address} />
           </div>
         </div>
       </div>

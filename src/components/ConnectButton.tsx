@@ -56,7 +56,7 @@ export default () => {
           <Button
             text="Disconnect"
             scale={1}
-            widthPx={120}
+            widthPx={130}
             green
             callback={() => disconnect()}
           />
@@ -65,7 +65,7 @@ export default () => {
         <Button
           text="Connect"
           scale={1}
-          widthPx={140}
+          widthPx={130}
           green
           callback={() => setModalActive("is-active")}
         />
@@ -91,7 +91,7 @@ export default () => {
                     }}
                   >
                     <img src={connectorImgs[i]} alt={x.name} width="80px" />
-                    <h2 className="subtitle pl-5">
+                    <h2 className="subtitle pl-5 has-text-black">
                       {x.name}
                     </h2>
                   </a>
@@ -101,7 +101,7 @@ export default () => {
                     target="_blank" href={connectorAlts[i].url}
                   >
                     <img src={connectorImgs[i]} alt={x.name} width="80px" />
-                    <h2 className="subtitle pl-5">
+                    <h2 className="subtitle pl-5 has-text-black">
                       {connectorAlts[i].text}
                     </h2>
                   </a>

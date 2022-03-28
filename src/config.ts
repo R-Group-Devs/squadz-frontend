@@ -1,25 +1,19 @@
 export type NetworkName = "Mumbai"
 
 interface Network {
-  id: number
+  id: number;
+  factoryAddress: string;
+  engineAddress: string;
+  subgraphEndpoint: string;
+  blockchainExplorer: string;
 }
 
 export const networks: Record<NetworkName, Network> = {
   "Mumbai": {
-    "id": 80001
-  },
-  /*
-  "Polygon Mainnet": {
-    "id": 137
-  }
-  */
-}
-
-export const contractAddresses: { [name: string]: Record<NetworkName, string> } = {
-  "ShellFactory": {
-    "Mumbai": "0x76e9f19D76Ae534cFb754AFE9D9CC52395E5fFaF"
-  },
-  "SquadzEngine": {
-    "Mumbai": "0xa58048953425945f1f728a523cb5be17d654db12"
+    id: 80001,
+    factoryAddress: "0x76e9f19D76Ae534cFb754AFE9D9CC52395E5fFaF",
+    engineAddress: "0x52d06bff391bbe1231d5c041316bead45c452907",
+    subgraphEndpoint: "https://api.thegraph.com/subgraphs/name/r-group-devs/shell-mumbai",
+    blockchainExplorer: "https://mumbai.polygonscan.com"
   }
 }

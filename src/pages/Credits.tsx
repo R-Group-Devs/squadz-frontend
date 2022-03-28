@@ -29,11 +29,11 @@ function CreditsBlock({ json, title, color }: { json: any, title: string, color:
 
 export default () => {
   return (
-    <div className="section pt-3">
+    <section className="section pt-3">
       <CreditsBlock json={fontCredits} title="Fonts" color="green" />
       <CreditsBlock json={imageCredits} title="Images" color="green" />
       <CreditsBlock json={softwareCredits} title="Software" color="pink" />
       <CreditsBlock json={sponsorCredits} title="Sponsors" color="pink" />
-    </div>
+    </section>
   )
 }

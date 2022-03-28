@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 
+import blob from "../public/images/magicpattern-blob-1647906613950.png"
 import Connector from './Connector'
 
-const levelItemPadding = "p-3"
+const levelItemPadding = "pl-5 pr-5 pt-3 pb-3"
 
 export default ({ connector }: { connector: boolean }) => {
   return (
@@ -10,7 +11,7 @@ export default ({ connector }: { connector: boolean }) => {
       <div className="level-left">
         <div className={`level-item ${levelItemPadding}`}>
           <Link to="/">
-            <h3 className="title is-PicNic is-3 has-text-green">SQUADZ</h3>
+            <img className="mt-2" src={blob} alt="Gradient blob" width={60} height={60} />
           </Link>
         </div>
       </div>

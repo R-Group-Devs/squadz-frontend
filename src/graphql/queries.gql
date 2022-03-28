@@ -1,0 +1,51 @@
+query memberForks($memberAddress: String!) {
+  nftowners(where: { owner: $memberAddress }) {
+    nft { fork { id } }
+  }
+}
+
+fragment forkFields on Fork {
+  id
+  forkId
+  owner { address }
+  collection {
+    id
+    name
+    symbol
+    address
+    nftCount
+    lastActivityAtTimestamp
+    nftCount
+  }
+}
+
+query squadsOf($engineAddress: String!, $memberAddress: String!, $memberForks: [ID!]) {
+  ownedForks: forks(where: { owner: $memberAddress, engine: $engineAddress }) {
+    ...forkFields
+  }
+
+  memberForks: forks(where: { id_in: $memberForks, engine: $engineAddress }) {
+    ...forkFields
+  }
+}
+
+query membersOf($forkId: ID!) {
+  fork(id: $forkId) {
+    id
+    forkId
+    owner { address }
+    collection {
+      id
+      name
+      symbol
+      address
+      nftCount
+      lastActivityAtTimestamp
+      nftOwners {
+        id
+        nftTokenId
+        owner { address }
+      }
+    }
+  }
+}

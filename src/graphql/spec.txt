@@ -1,0 +1,8 @@
+Queries:
+  /squads/:address
+    - all forks where:
+      - address is the collection owner, or
+      - address holds a token
+    
+  /squad/:id
+    - all nftHolders of the collection

@@ -1,4 +1,7 @@
-./src/.env.json
+
+
+# Secrets
+src/env.json
 
 # Logs
 logs
@@ -9,10 +12,12 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Generated
 node_modules
 dist
 dist-ssr
 *.local
+src/lib/generated*
 
 # Editor directories and files
 .vscode/*

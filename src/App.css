@@ -55,8 +55,11 @@
 
 /* Headings */
 
+.main {
+  font-size: 9em !important;
+}
+
 .title.main {
-  font-size: 9em;
   margin-bottom: 2rem;
 }
 
@@ -90,6 +93,12 @@
 
 .level-item-left {
   justify-content: left;
+}
+
+@media screen and (max-width: 768px) {
+  .level-item:not(:last-child) {
+    margin: 0;
+  }
 }
 
 /* Footer */

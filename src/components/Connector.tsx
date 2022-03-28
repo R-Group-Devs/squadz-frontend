@@ -6,8 +6,8 @@ export default () => {
     <>
       <div className="level">
         <div className="level-right">
-          <div className="level-item level-item-left p-2"><ConnectButton /></div>
-          <div className="level-item level-item-left p-2"><NetworkDropdown /></div>
+          <div className="level-item level-item-left pr-3"><ConnectButton /></div>
+          <div className="level-item level-item-left"><NetworkDropdown /></div>
         </div>
       </div>
     </>
