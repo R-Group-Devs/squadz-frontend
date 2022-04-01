@@ -6,7 +6,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 
 // API key for Ethereum node
 // Two popular services are Infura (infura.io) and Alchemy (alchemy.com)
-import { infuraId } from '../env.json'
+import env from '../env'
 
 // Chains for connectors to support
 const chains = defaultChains
@@ -25,7 +25,7 @@ const connectors = ({ chainId }: { chainId?: number | undefined }) => {
     }),
     new WalletConnectConnector({
       options: {
-        infuraId,
+        infuraId: env.infuraId,
         qrcode: true,
       },
     }),

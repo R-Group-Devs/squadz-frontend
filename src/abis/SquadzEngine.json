@@ -5,6 +5,11 @@
         "internalType": "address",
         "name": "nameRecordAddress",
         "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "baseSVG_",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -48,6 +53,12 @@
         "internalType": "uint256",
         "name": "max",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "svgAddress",
+        "type": "address"
       }
     ],
     "name": "SetCollectionConfig",
@@ -113,6 +124,19 @@
         "internalType": "uint8",
         "name": "",
         "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "baseSVG",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -213,6 +237,70 @@
         "internalType": "uint256",
         "name": "max",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "svgAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IShellFramework",
+        "name": "collection",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "fork",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "member",
+        "type": "address"
+      }
+    ],
+    "name": "getMemberInfo",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "latestTokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "forkBalance",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "latestTokenTime",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "active",
+        "type": "bool"
+      },
+      {
+        "internalType": "bool",
+        "name": "admin",
+        "type": "bool"
+      },
+      {
+        "internalType": "uint256",
+        "name": "power",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "latestMintTime",
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -255,35 +343,6 @@
   {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "memberName",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "tokenName",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "tokenId",
-        "type": "string"
-      }
-    ],
-    "name": "getSVG",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "contract IShellFramework",
         "name": "collection",
         "type": "address"
@@ -300,84 +359,6 @@
         "internalType": "string",
         "name": "",
         "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "contract IShellFramework",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "fork",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "member",
-        "type": "address"
-      }
-    ],
-    "name": "isActiveAdmin",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "contract IShellFramework",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "fork",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "member",
-        "type": "address"
-      }
-    ],
-    "name": "latestTokenOf",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "forkBalance",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bool",
-        "name": "admin",
-        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -461,35 +442,6 @@
         "type": "address"
       }
     ],
-    "name": "powerOfAt",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "power",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "contract IShellFramework",
-        "name": "collection",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "fork",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "member",
-        "type": "address"
-      }
-    ],
     "name": "removeAdmin",
     "outputs": [],
     "stateMutability": "nonpayable",
@@ -526,6 +478,11 @@
         "internalType": "uint256",
         "name": "max",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "svgAddress",
+        "type": "address"
       }
     ],
     "name": "setCollectionConfig",

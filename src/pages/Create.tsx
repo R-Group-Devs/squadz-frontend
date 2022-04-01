@@ -7,6 +7,7 @@ import useContractWritable from '../hooks/useContractWritable'
 import { NetworkName, networks } from '../config'
 import useNetwork from '../hooks/useNetwork'
 import ShellFactoryAbi from '../abis/ShellFactory.json'
+import { handleError } from '../lib'
 
 const labelClass = "label has-text-green is-size-5"
 const inputClass = "is-size-6"
@@ -18,7 +19,7 @@ export default () => {
   const [owner, setOwner] = useState<string>(data?.address || "")
   const [network,] = useNetwork()
   const factory = useContractWritable(networks[network as NetworkName].factoryAddress, ShellFactoryAbi)
-  const width = 280
+  const width = 260
 
   useEffect(() => {
     if (owner === "" && data?.address !== undefined) setOwner(data.address)
@@ -26,7 +27,7 @@ export default () => {
 
   const handleCreateCollection = () => {
     if (typeof factory === "string") {
-      console.warn("Contract problem:", factory)
+      handleError(factory)
       return
     }
     factory.createCollection(
@@ -38,56 +39,58 @@ export default () => {
     )
       .then(console.log)
       .catch((e: Error) => {
-        console.warn(e)
+        handleError(e)
       })
   }
 
   return (
     <section className="section pt-3">
-      <h3 className={`subtitle is-3 has-text-green`}>Create Squad</h3>
-      <div className="block mb-5">
-        <label className={labelClass}>Connection & Network</label>
-        <Connector />
-      </div>
-      <div className="block pb-2">
-        <div className="field mb-5">
-          <label className={labelClass}>Name</label>
-          <input
-            className={inputClass}
-            type="text"
-            placeholder="alice's squad"
-            onChange={(e) => { setName(e.target.value) }}
-            style={{ width }}
+      <div className="block rounded-border green-border">
+        <h3 className={`subtitle is-3 has-text-green`}>Create Squad</h3>
+        <div className="block mb-5">
+          <label className={labelClass}>Connection & Network</label>
+          <Connector />
+        </div>
+        <div className="block pb-2">
+          <div className="field mb-5">
+            <label className={labelClass}>Name</label>
+            <input
+              className={inputClass}
+              type="text"
+              placeholder="alice's squad"
+              onChange={(e) => { setName(e.target.value) }}
+              style={{ width }}
+            />
+          </div>
+          <div className="field mb-5">
+            <label className={labelClass}>Symbol</label>
+            <input
+              className={inputClass}
+              type="text"
+              placeholder="ALICE"
+              onChange={(e) => { setSymbol(e.target.value) }}
+              style={{ width }}
+            />
+          </div>
+          <div className="field">
+            <label className={labelClass}>Owner</label>
+            <input
+              className={inputClass}
+              type="text"
+              placeholder={owner === "" ? "0x12345..." : owner}
+              onChange={(e) => { setOwner(e.target.value) }}
+              style={{ width }}
+            />
+          </div>
+        </div>
+        <div className="block">
+          <Button
+            text="Create"
+            scale={2}
+            widthPx={width}
+            callback={handleCreateCollection}
           />
         </div>
-        <div className="field mb-5">
-          <label className={labelClass}>Symbol</label>
-          <input
-            className={inputClass}
-            type="text"
-            placeholder="ALICE"
-            onChange={(e) => { setSymbol(e.target.value) }}
-            style={{ width }}
-          />
-        </div>
-        <div className="field">
-          <label className={labelClass}>Owner</label>
-          <input
-            className={inputClass}
-            type="text"
-            placeholder={owner === "" ? "0x12345..." : owner}
-            onChange={(e) => { setOwner(e.target.value) }}
-            style={{ width }}
-          />
-        </div>
-      </div>
-      <div className="block">
-        <Button
-          text="Create"
-          scale={2}
-          widthPx={width}
-          callback={handleCreateCollection}
-        />
       </div>
     </section>
   )

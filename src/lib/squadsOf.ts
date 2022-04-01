@@ -1,7 +1,7 @@
 import { NetworkName, networks } from '../config'
 import { getGraphClient } from './graph'
 
-export default async (network: NetworkName, memberAddress?: string) => {
+export async function squadsOf(network: NetworkName, memberAddress?: string) {
   if (memberAddress === undefined) return undefined
   const client = getGraphClient(network)
   const memberForksQuery = await client.memberForks({ memberAddress })

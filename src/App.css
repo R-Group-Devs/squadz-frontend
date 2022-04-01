@@ -56,11 +56,15 @@
 /* Headings */
 
 .main {
-  font-size: 9em !important;
+  font-size: 9.5em !important;
 }
 
-.title.main {
+.main.title {
   margin-bottom: 2rem;
+}
+
+.title.is-1 {
+  font-size: 6em;
 }
 
 /* Buttons */
@@ -79,6 +83,25 @@
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
+}
+
+.circle-button {
+  background-color: #E086D3;
+  border-radius: 50%;
+  color: white;
+  padding: 0.4rem 0.6rem 0.4rem 0.6rem;
+}
+
+.circle-button:hover {
+  color: white;
+}
+
+.circle-button.disabled {
+  background-color: lightgrey;
+}
+
+.circle-button.disabled:hover {
+  cursor: default; 
 }
 
 /* Levels */
@@ -162,12 +185,45 @@ input::placeholder {
   border-bottom: 1px solid black;
 }
 
+/* Blocks & Boxes */
+
+.rounded-border {
+  padding: 1rem;
+  border: 2px solid;
+  border-radius: 2rem;
+}
+
+.block.max-width {
+  max-width: 544px;
+}
+
+.pink-border {
+  border-color: #E086D3;
+}
+
+.green-border {
+  border-color: #2FBF71;
+}
+
+.box {
+  box-shadow: none;
+}
+
+/* Spans */
+
+span.rounded-border {
+  padding: 0.5rem;
+  border: 2px solid;
+  border-radius: 1rem;
+}
+
 /* Generic flexbox stuff */
 
 .row {
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .space-between {

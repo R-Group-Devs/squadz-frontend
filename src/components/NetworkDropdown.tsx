@@ -23,6 +23,9 @@ export default () => {
     <div className={`dropdown ${dropdownActive}`}>
       <div className="dropdown-trigger">
         <span onClick={toggleDropdown}>
+          <div className="is-size-7 has-text-grey" style={{ position: "absolute", bottom: 20 }}>
+            Network:
+          </div>
           <span className="row space-between">
             <span className={classStyle}>{network}&nbsp;</span>
             {arrow}

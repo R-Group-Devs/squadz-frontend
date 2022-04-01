@@ -5,10 +5,10 @@ import Button from './Button'
 import NetworkDropdown from './NetworkDropdown'
 
 export default ({ defaultAddress }: { defaultAddress?: string }) => {
-  const [address, setAddress] = useState<string>("")
+  const [address, setAddress] = useState<string>()
 
   useEffect(() => {
-    if (defaultAddress !== undefined) setAddress(defaultAddress)
+    if (defaultAddress !== undefined && address === undefined) setAddress(defaultAddress)
   })
 
   return (

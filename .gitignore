@@ -1,7 +1,7 @@
 
 
 # Secrets
-src/env.json
+src/env.ts
 
 # Logs
 logs

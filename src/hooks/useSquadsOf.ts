@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 
 import useNetwork from "./useNetwork"
-import squadsOf from "../lib/squadsOf"
+import { squadsOf } from "../lib"
 import { NetworkName } from '../config'
 
 export default (memberAddress?: string) => {

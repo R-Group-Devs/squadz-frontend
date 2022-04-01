@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useConnect, useAccount, useNetwork as useWalletNetwork } from 'wagmi'
 
-import { shortAddress } from '../utils'
+import { shortAddress } from '../lib'
 import MetaMaskSVG from '../assets/images/metamask-fox.svg'
 import WalletConnectSVG from '../assets/images/walletconnect-logo.svg'
 import WalletLinkLogo from '../assets/images/coinbase-wallet.png'
@@ -77,13 +77,13 @@ export default () => {
       }
       <div className={`modal ${modalActive}`}>
         <div className="modal-background" onClick={() => setModalActive("")} />
-        <div className="modal-content has-background-white">
+        <div className="modal-content has-background-white rounded-border green-border">
           <div className="box">
             {data.connectors.map((x, i) => (
               <section className="section" key={x.id} >
                 {x.ready ?
                   <a
-                    className="button is-ghost has-text-black"
+                    className="button is-ghost has-text-green"
                     onClick={() => {
                       connect(x).then((res) => {
                         if (res?.data !== undefined) setModalActive("")
@@ -91,17 +91,17 @@ export default () => {
                     }}
                   >
                     <img src={connectorImgs[i]} alt={x.name} width="80px" />
-                    <h2 className="subtitle pl-5 has-text-black">
+                    <h2 className="subtitle pl-5 has-text-green">
                       {x.name}
                     </h2>
                   </a>
                   :
                   <a
-                    className="button is-ghost has-text-black"
+                    className="button is-ghost has-text-green"
                     target="_blank" href={connectorAlts[i].url}
                   >
                     <img src={connectorImgs[i]} alt={x.name} width="80px" />
-                    <h2 className="subtitle pl-5 has-text-black">
+                    <h2 className="subtitle pl-5 has-text-green">
                       {connectorAlts[i].text}
                     </h2>
                   </a>

@@ -13,7 +13,7 @@ const months = [
   "Dec"
 ]
 
-export function timeSinceTimestamp(timestamp: number): string {
+export function timestampToDate(timestamp: number): string {
   const date = new Date(timestamp * 1000)
   return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
 }
