@@ -1,6 +1,7 @@
 
 
 # Secrets
+src/env.ts
 
 # Logs
 logs
