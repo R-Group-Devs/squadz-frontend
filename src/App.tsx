@@ -2,6 +2,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bulma'
 import './App.css'
 
+/* Polyfills */
+import { Buffer } from 'buffer';
+
+if (window.Buffer === undefined) {
+  window.Buffer = Buffer;
+}
+/*  *  *  *  */
+
 import NetworkProvider from './providers/NetworkProvider'
 import WalletProvider from './providers/WalletProvider'
 import QueryProvider from './providers/QueryProvider'

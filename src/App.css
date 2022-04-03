@@ -77,6 +77,10 @@
   cursor: pointer;
 }
 
+.button-text:hover {
+  text-shadow: 0 0 2px white;
+}
+
 .in-ellipse {
   position: absolute;
   top: 50%;
@@ -115,7 +119,7 @@
 }
 
 .level-item-left {
-  justify-content: left;
+  justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -149,6 +153,7 @@
 input {
   border: none;
   border-bottom: 1px solid black;
+  border-radius: 0;
   outline: none;
   font-family: Karrik;
   font-size: 1rem;
@@ -158,6 +163,11 @@ input {
 
 input::placeholder {
   color: lightgray;
+}
+
+input.rounded-border {
+  padding: 1rem 0.4rem 1rem 0.4rem;
+  border-radius: 1rem;
 }
 
 .dropdown-trigger {
@@ -212,7 +222,7 @@ input::placeholder {
 /* Spans */
 
 span.rounded-border {
-  padding: 0.5rem;
+  padding: 0.25rem;
   border: 2px solid;
   border-radius: 1rem;
 }
@@ -224,6 +234,10 @@ span.rounded-border {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.row.center {
+  justify-content: center;
 }
 
 .space-between {

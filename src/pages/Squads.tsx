@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react'
+import { Suspense } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useAccount } from 'wagmi'
 
@@ -22,10 +22,11 @@ function Squads({ address }: { address?: string }) {
   const [{ data: account },] = useAccount()
   const navigate = useNavigate()
   const { data: squads } = useSquadsOf(address)
+
   if (address === "undefined" && account?.address !== undefined) {
-    console.log('inside')
     navigate({ pathname: `/squads/${account.address}` })
   }
+
   let areOwnedForks = false
   if (squads?.ownedForks?.length !== undefined) {
     if (squads.ownedForks.length > 0) areOwnedForks = true
@@ -35,8 +36,6 @@ function Squads({ address }: { address?: string }) {
     if (squads.memberForks.length > 0) areMemberForks = true
   }
   const usedForkIds: string[] = []
-
-  useEffect(() => { }, [account])
 
   return (
     <div>

@@ -9,8 +9,6 @@ export default () => {
   const navigate = useNavigate()
   const [{ data },] = useAccount()
 
-  console.log(import.meta.env, process.env)
-
   return (
     <section className="hero is-fullheight">
       <div className="hero-body p-2">

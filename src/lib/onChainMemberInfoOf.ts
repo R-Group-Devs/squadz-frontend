@@ -2,7 +2,7 @@ import { Contract } from '@ethersproject/contracts'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 
-import { timestampToDate, handleError } from '.'
+import { handleError } from '.'
 import { networks, NetworkName } from '../config'
 import env from '../env'
 import ShellERC721Abi from '../abis/ShellERC721.json'
@@ -44,8 +44,8 @@ export async function onChainMemberInfoOf(
 
     const provider = new JsonRpcProvider(env.providers[networks[network as NetworkName].id as 80001])
     const collection = new Contract(collectionAddress, ShellERC721Abi, provider)
-
-    const uri = await collection.tokenURI(rawMemberInfo.latestTokenId)
+    let uri = ""
+    if (!rawMemberInfo.latestTokenId.eq(0)) uri = await collection.tokenURI(rawMemberInfo.latestTokenId)
 
     return {
       active: rawMemberInfo.active,

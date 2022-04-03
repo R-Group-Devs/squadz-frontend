@@ -46,7 +46,7 @@ export default () => {
   return (
     <div>
       {accountData?.connector?.ready ?
-        <div className="row">
+        <div className="row center">
           <span className="is-size-6 pr-2">{
             accountData.ens ?
               accountData.ens.name

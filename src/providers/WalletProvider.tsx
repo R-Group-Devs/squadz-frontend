@@ -4,8 +4,6 @@ import { InjectedConnector } from 'wagmi/connectors/injected'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 // import { WalletLinkConnector } from 'wagmi/connectors/walletLink'
 
-// API key for Ethereum node
-// Two popular services are Infura (infura.io) and Alchemy (alchemy.com)
 import env from '../env'
 
 // Chains for connectors to support
