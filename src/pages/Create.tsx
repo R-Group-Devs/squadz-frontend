@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAccount } from 'wagmi'
+import { TransactionResponse } from "@ethersproject/providers"
 
 import Button from '../components/Button'
 import Connector from '../components/Connector'
+import useNotifications from '../hooks/useNotifications'
 import useContractWritable from '../hooks/useContractWritable'
+import { shortString, resolveTx } from "../lib"
 import { NetworkName, networks } from '../config'
 import useNetwork from '../hooks/useNetwork'
 import ShellFactoryAbi from '../abis/ShellFactory.json'
-import { handleError } from '../lib'
 
 const labelClass = "label has-text-green is-size-5"
 const inputClass = "is-size-6"
@@ -18,6 +21,8 @@ export default () => {
   const [symbol, setSymbol] = useState<string>("")
   const [owner, setOwner] = useState<string>(data?.address || "")
   const [network,] = useNetwork()
+  const { addNotification } = useNotifications()
+  const navigate = useNavigate()
   const factory = useContractWritable(networks[network as NetworkName].factoryAddress, ShellFactoryAbi)
   const width = 260
 
@@ -27,7 +32,11 @@ export default () => {
 
   const handleCreateCollection = () => {
     if (typeof factory === "string") {
-      handleError(factory)
+      addNotification(
+        "errors",
+        <span>{`ERROR: ${factory}`}</span>,
+        factory + "create form"
+      )
       return
     }
     factory.createCollection(
@@ -37,15 +46,19 @@ export default () => {
       networks[network as NetworkName].engineAddress,
       owner
     )
-      .then(console.log)
-      .catch((e: Error) => {
-        handleError(e)
+      .then((res: TransactionResponse) => {
+        resolveTx(addNotification, res, network as NetworkName, () => navigate({ pathname: `/squads/${owner}` }))
       })
+      .catch((e: Error) => addNotification(
+        "errors",
+        <span>{`ERROR: ${shortString(e.message, 6)}`}</span>,
+        e.message + "create form"
+      ))
   }
 
   return (
     <section className="section pt-3">
-      <div className="block rounded-border green-border">
+      <div className="container rounded-border green-border" style={{ maxWidth: 480 }}>
         <h3 className={`subtitle is-3 has-text-green`}>Create Squad</h3>
         <div className="block mb-5">
           <label className={labelClass}>Connection & Network</label>

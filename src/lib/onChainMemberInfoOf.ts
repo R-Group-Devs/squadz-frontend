@@ -2,7 +2,6 @@ import { Contract } from '@ethersproject/contracts'
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 
-import { handleError } from '.'
 import { networks, NetworkName } from '../config'
 import env from '../env'
 import ShellERC721Abi from '../abis/ShellERC721.json'
@@ -33,12 +32,12 @@ export async function onChainMemberInfoOf(
   collectionAddress?: string,
   fork?: number,
   memberAddress?: string
-): Promise<MemberInfo | undefined> {
+): Promise<MemberInfo | string> {
   if (
     collectionAddress === undefined ||
     fork === undefined ||
     memberAddress === undefined
-  ) return
+  ) return "undefined variable"
   try {
     const rawMemberInfo: RawMemberInfo = await squadzEngine.getMemberInfo(collectionAddress, fork, memberAddress)
 
@@ -57,6 +56,6 @@ export async function onChainMemberInfoOf(
       latestMintTime: rawMemberInfo.latestMintTime.toNumber()
     }
   } catch (e) {
-    handleError(e)
+    return "failed to get member info"
   }
 }

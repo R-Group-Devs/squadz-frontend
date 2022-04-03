@@ -7,9 +7,10 @@ import Expander from "../components/Expander"
 import SquadConfigBox from "../components/SquadConfigBox"
 import MintForm from "../components/MintForm"
 import MemberCards from "../components/MemberCards"
+import useNotifications from "../hooks/useNotifications"
 import useMembersOf from "../hooks/useMembersOf"
 import useMemberInfoOf from "../hooks/useMemberInfoOf"
-import { makeForkId } from "../lib"
+import { makeForkId, shortString } from "../lib"
 import useSquadConfigOf from "../hooks/useSquadConfigOf"
 
 export default () => {
@@ -36,6 +37,30 @@ function Squad({ collectionAddress, forkNumber }: SquadProps) {
   const { data: members } = useMembersOf(makeForkId(collectionAddress, forkNumber))
   const [{ data: account },] = useAccount()
   const { data: memberInfo } = useMemberInfoOf(collectionAddress, forkNumber, account?.address)
+  const { addNotification } = useNotifications()
+
+  if (typeof (members) === "string") addNotification(
+    "errors",
+    <span>{`ERROR: ${shortString(members, 6)}`}</span>,
+    "squad members"
+  )
+
+  if (typeof (memberInfo) === "string") addNotification(
+    "errors",
+    <span>{`ERROR: ${shortString(memberInfo, 6)}`}</span>,
+    "squad member info"
+  )
+
+  if (typeof (members) === "string" || typeof (memberInfo) === "string")
+    return (
+      <section className="section pt-3 has-text-centered">
+        <div className="hero">
+          <div className="hero-body">
+            <h1 className="is-PicNic is-1 has-text-pink">Error</h1>
+          </div>
+        </div>
+      </section>
+    )
 
   const isOwner = members?.squad.fork?.owner.address.toLowerCase() === account?.address.toLowerCase()
   const isActiveAdmin = memberInfo?.active && memberInfo?.admin
@@ -62,6 +87,7 @@ function Squad({ collectionAddress, forkNumber }: SquadProps) {
             <MintForm
               collectionAddress={members?.squad.fork?.collection.address}
               forkNumber={members?.squad.fork?.forkId}
+              owner={isOwner}
               admin={true}
               adminUser={isActiveAdmin}
             />
@@ -86,6 +112,7 @@ function Squad({ collectionAddress, forkNumber }: SquadProps) {
             <MintForm
               collectionAddress={members?.squad.fork?.collection.address}
               forkNumber={members?.squad.fork?.forkId}
+              owner={isOwner}
               admin={false}
               adminUser={isActiveAdmin}
               cooldown={squadConfig?.cooldown}

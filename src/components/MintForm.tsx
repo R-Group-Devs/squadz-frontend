@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
+import { TransactionResponse } from "@ethersproject/providers"
 
 import useNetwork from "../hooks/useNetwork"
-import { handleError, timestampToNumbers } from "../lib"
+import useNotifications from "../hooks/useNotifications"
+import { shortString, timestampToNumbers, resolveTx } from "../lib"
 import useContractWritable from '../hooks/useContractWritable'
 import { networks, NetworkName } from "../config"
 import SquadzEngineAbi from "../abis/SquadzEngine.json"
@@ -9,6 +11,7 @@ import SquadzEngineAbi from "../abis/SquadzEngine.json"
 interface MintFormProps {
   collectionAddress: string | undefined;
   forkNumber: number | undefined;
+  owner: boolean;
   admin: boolean;
   adminUser?: boolean;
   cooldown?: number;
@@ -24,6 +27,7 @@ function getTimeLeft(to: number): number {
 export default ({
   collectionAddress,
   forkNumber,
+  owner,
   admin,
   adminUser,
   cooldown,
@@ -33,6 +37,8 @@ export default ({
   const [network,] = useNetwork()
   const engine = useContractWritable(networks[network as NetworkName].engineAddress, SquadzEngineAbi)
   const [cooldownLeft, setCooldownLeft] = useState<number>(0)
+  const { addNotification } = useNotifications()
+  const [rerender, setRerender] = useState<number>(0)
 
   useEffect(() => {
     if (cooldown !== undefined && latestMintTime !== undefined) {
@@ -53,7 +59,11 @@ export default ({
 
   const handleMint = () => {
     if (typeof engine === "string") {
-      handleError(engine)
+      addNotification(
+        "errors",
+        <span>{`ERROR: ${engine}`}</span>,
+        engine + "mint form"
+      )
       return
     }
     engine.mint(
@@ -62,10 +72,13 @@ export default ({
       address,
       admin
     )
-      .then(console.log)
-      .catch((e: Error) => {
-        handleError(e)
-      })
+      .then((res: TransactionResponse) =>
+        resolveTx(addNotification, res, network as NetworkName), () => setRerender(rerender + 1))
+      .catch((e: Error) => addNotification(
+        "errors",
+        <span>{`ERROR: ${shortString(e.message, 6)}`}</span>,
+        e.message + "mint form"
+      ))
   }
 
   return (
@@ -78,14 +91,14 @@ export default ({
           onChange={(e) => { setAddress(e.currentTarget.value) }}
         />
       </div>
-      {(adminUser !== undefined && adminUser && cooldownLeft > 0) ?
+      {(!owner && adminUser !== undefined && adminUser && cooldownLeft > 0) ?
         <div className="level-item">
-          <a className="circle-button disabled has-text-weight-bold">&#65291;</a>
+          <a className="circle-button button-text disabled has-text-weight-bold">&#65291;</a>
           <div className="is-size-7 has-text-grey pl-1">({timestampToNumbers(cooldownLeft)})</div>
         </div>
         :
         <div className="level-item">
-          <a className="circle-button has-text-weight-bold" onClick={handleMint}>&#65291;</a>
+          <a className="circle-button button-text has-text-weight-bold" onClick={handleMint}>&#65291;</a>
         </div>
       }
     </div>

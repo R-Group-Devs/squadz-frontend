@@ -1,0 +1,79 @@
+@keyframes from0to360 {
+  from{transform:rotate(0);}
+  to{transform:rotate(360deg);}
+}
+@keyframes from360to0 {
+  from{transform:rotate(360deg);}
+  to{transform:rotate(0deg);}
+}
+@keyframes scaleUp {
+  from{transform:scale(0.8);}
+  to{transform:scale(1);}
+}
+@keyframes scaleDown {
+  from{transform:scale(1);}
+  to{transform:scale(0.8);}
+}
+
+@keyframes from360to0scaled {
+  from{transform:rotate(360deg) scale(1.1); }
+  to{transform:rotate(0deg) scale(0.25);}
+}
+
+.blob-svg {
+will-change: transform;
+}
+
+.circle1 {
+  animation: from0to360 10s linear infinite;
+  cx: 150;
+  cy: 145;
+  r: 100;
+  fill: white;
+  transform-origin: 145px 150px;
+}
+.circle2 {
+  animation: from360to0 20s linear infinite;
+  cx: 150;
+  cy: 155;
+  r: 100;
+  fill: white;
+  transform-origin: 160px 150px;
+}
+
+.circle3 {
+  animation: from0to360 30s linear infinite alternate;
+  cx: 145;
+  cy: 150;
+  r: 100;
+  fill: white;
+  transform-origin: 150px 145px;
+}
+
+.circle4 {
+  animation: from360to0 25s linear infinite;
+  cx: 155;
+  cy: 150;
+  r: 100;
+  fill: white;
+  transform-origin: 150px 155px;
+}
+
+.ellipse1 {
+  animation: from360to0scaled 20s linear infinite alternate;
+  rx: 120;
+  ry: 100;
+  cx: 150;
+  cy: 150;
+  fill: white;
+  transform-origin: 130px 155px;
+}
+.ellipse2 {
+  animation: from0to360 15s linear infinite;
+  rx: 120;
+  ry: 100;
+  cx: 150;
+  cy: 150;
+  fill: white;
+  transform-origin: 150px 155px;
+}

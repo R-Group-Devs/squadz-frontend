@@ -27,8 +27,8 @@ export async function membersOf(
   network: NetworkName,
   squadz: Contract,
   forkId?: string
-): Promise<Members | undefined> {
-  if (forkId === undefined) return undefined
+): Promise<Members | string> {
+  if (forkId === undefined) return "undefined variable"
   const client = getGraphClient(network)
   const res = await client.membersOf({ forkId })
 
@@ -52,7 +52,7 @@ export async function membersOf(
         res.fork?.forkId,
         address
       )
-      if (info === undefined) continue
+      if (typeof info == "string") return info
 
       const member: Member = { address, info }
       info.active && info.admin ? members.admins.push(member) : members.members.push(member)

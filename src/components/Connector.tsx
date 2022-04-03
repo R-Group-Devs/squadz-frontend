@@ -9,6 +9,7 @@ export default () => {
           <div className="level-item level-item-left pr-3 mb-2"><ConnectButton /></div>
           <div className="level-item level-item-left"><NetworkDropdown /></div>
         </div>
+        <div className="level-left"></div>
       </div>
     </>
   )

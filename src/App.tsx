@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bulma'
 import './App.css'
+import './blob.css'
 
 /* Polyfills */
 import { Buffer } from 'buffer';
@@ -13,6 +14,7 @@ if (window.Buffer === undefined) {
 import NetworkProvider from './providers/NetworkProvider'
 import WalletProvider from './providers/WalletProvider'
 import QueryProvider from './providers/QueryProvider'
+import NotificationsProvider from './providers/NotificationsProvider'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Credits from './pages/Credits'
@@ -27,19 +29,21 @@ function App() {
       <NetworkProvider>
         <WalletProvider>
           <QueryProvider>
-            <BrowserRouter>
-              <Layout>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/credits" element={<Credits />} />
-                  <Route path="/create" element={<Create />} />
-                  <Route path="/squads/:address" element={<Squads />} />
-                  <Route path="/squad/:collectionAddress/:forkNumber" element={<Squad />} />
+            <NotificationsProvider>
+              <BrowserRouter>
+                <Layout>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/credits" element={<Credits />} />
+                    <Route path="/create" element={<Create />} />
+                    <Route path="/squads/:address" element={<Squads />} />
+                    <Route path="/squad/:collectionAddress/:forkNumber" element={<Squad />} />
 
-                  <Route path="*" element={<FourOhFour />} />
-                </Routes>
-              </Layout>
-            </BrowserRouter>
+                    <Route path="*" element={<FourOhFour />} />
+                  </Routes>
+                </Layout>
+              </BrowserRouter>
+            </NotificationsProvider>
           </QueryProvider>
         </WalletProvider>
       </NetworkProvider>

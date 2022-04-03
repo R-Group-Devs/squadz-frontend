@@ -1,8 +1,8 @@
 import fontCredits from '../assets/fonts/credits.json'
-import imageCredits from '../public/images/credits.json'
 
 const softwareCredits = {
-  "shell": "heyshell.xyz"
+  "shell": "heyshell.xyz",
+  "Blob SVG": "@Smitche on codepen.io"
 }
 
 const sponsorCredits = {
@@ -31,7 +31,6 @@ export default () => {
   return (
     <section className="section pt-3">
       <CreditsBlock json={fontCredits} title="Fonts" color="green" />
-      <CreditsBlock json={imageCredits} title="Images" color="green" />
       <CreditsBlock json={softwareCredits} title="Software" color="pink" />
       <CreditsBlock json={sponsorCredits} title="Sponsors" color="pink" />
     </section>
