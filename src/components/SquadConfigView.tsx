@@ -55,7 +55,7 @@ export default ({ owner, squadConfig, user, setEditing }: SquadConfigSubProps) =
           <div className="level-left">
             <span className="level-item mr-1">{`Image generator: `}</span>
             <span className="level-item">
-              <span className="rounded-border">{shortAddress(squadConfig?.svgAddress)}</span>
+              <span className="rounded-border"><ShortAddress address={squadConfig?.svgAddress} /></span>
             </span>
           </div>
         </div>

@@ -1,3 +1,4 @@
+export * from './copy'
 export * from './graph'
 export * from './makeForkId'
 export * from './membersOf'

@@ -13,6 +13,7 @@ import useNetwork from '../hooks/useNetwork'
 import ShellFactoryAbi from '../abis/ShellFactory.json'
 
 const labelClass = "label has-text-green is-size-5"
+const fieldStyle = { width: "70%", marginLeft: "15%", marginRight: "15%" }
 const inputClass = "is-size-6"
 
 export default () => {
@@ -24,7 +25,7 @@ export default () => {
   const { addNotification } = useNotifications()
   const navigate = useNavigate()
   const factory = useContractWritable(networks[network as NetworkName].factoryAddress, ShellFactoryAbi)
-  const width = 260
+  const width = "100%"
 
   useEffect(() => {
     if (owner === "" && data?.address !== undefined) setOwner(data.address)
@@ -58,14 +59,14 @@ export default () => {
 
   return (
     <section className="section pt-3">
-      <div className="container rounded-border green-border" style={{ maxWidth: 480 }}>
-        <h3 className={`subtitle is-3 has-text-green`}>Create Squad</h3>
-        <div className="block mb-5">
-          <label className={labelClass}>Connection & Network</label>
-          <Connector />
-        </div>
+      <div className="container rounded-border green-border" style={{ maxWidth: 680 }}>
+        <h3 className={`subtitle is-3 has-text-green has-text-centered mt-4`}>Create Squad</h3>
         <div className="block pb-2">
-          <div className="field mb-5">
+          <div className="field mb-5" style={fieldStyle}>
+            <label className={labelClass} style={{ width: "100%" }}>Connection & Network</label>
+            <Connector />
+          </div>
+          <div className="field mb-5" style={fieldStyle}>
             <label className={labelClass}>Name</label>
             <input
               className={inputClass}
@@ -75,7 +76,7 @@ export default () => {
               style={{ width }}
             />
           </div>
-          <div className="field mb-5">
+          <div className="field mb-5" style={fieldStyle}>
             <label className={labelClass}>Symbol</label>
             <input
               className={inputClass}
@@ -85,7 +86,7 @@ export default () => {
               style={{ width }}
             />
           </div>
-          <div className="field">
+          <div className="field" style={fieldStyle}>
             <label className={labelClass}>Owner</label>
             <input
               className={inputClass}
@@ -96,11 +97,10 @@ export default () => {
             />
           </div>
         </div>
-        <div className="block">
+        <div className="block pt-2 mb-5" style={fieldStyle}>
           <Button
             text="Create"
             scale={2}
-            widthPx={width}
             callback={handleCreateCollection}
           />
         </div>

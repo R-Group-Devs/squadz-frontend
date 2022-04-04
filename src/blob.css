@@ -1,79 +1,21 @@
-@keyframes from0to360 {
-  from{transform:rotate(0);}
-  to{transform:rotate(360deg);}
-}
-@keyframes from360to0 {
-  from{transform:rotate(360deg);}
-  to{transform:rotate(0deg);}
-}
-@keyframes scaleUp {
-  from{transform:scale(0.8);}
-  to{transform:scale(1);}
-}
-@keyframes scaleDown {
-  from{transform:scale(1);}
-  to{transform:scale(0.8);}
+.blob path {
+  animation: blob 20s linear infinite;
 }
 
-@keyframes from360to0scaled {
-  from{transform:rotate(360deg) scale(1.1); }
-  to{transform:rotate(0deg) scale(0.25);}
-}
-
-.blob-svg {
-will-change: transform;
-}
-
-.circle1 {
-  animation: from0to360 10s linear infinite;
-  cx: 150;
-  cy: 145;
-  r: 100;
-  fill: white;
-  transform-origin: 145px 150px;
-}
-.circle2 {
-  animation: from360to0 20s linear infinite;
-  cx: 150;
-  cy: 155;
-  r: 100;
-  fill: white;
-  transform-origin: 160px 150px;
-}
-
-.circle3 {
-  animation: from0to360 30s linear infinite alternate;
-  cx: 145;
-  cy: 150;
-  r: 100;
-  fill: white;
-  transform-origin: 150px 145px;
-}
-
-.circle4 {
-  animation: from360to0 25s linear infinite;
-  cx: 155;
-  cy: 150;
-  r: 100;
-  fill: white;
-  transform-origin: 150px 155px;
-}
-
-.ellipse1 {
-  animation: from360to0scaled 20s linear infinite alternate;
-  rx: 120;
-  ry: 100;
-  cx: 150;
-  cy: 150;
-  fill: white;
-  transform-origin: 130px 155px;
-}
-.ellipse2 {
-  animation: from0to360 15s linear infinite;
-  rx: 120;
-  ry: 100;
-  cx: 150;
-  cy: 150;
-  fill: white;
-  transform-origin: 150px 155px;
+@keyframes blob {
+  0% {
+    d:path("M66.8,-23.1C73.8,-0.1,58,28.9,36.3,43C14.6,57.1,-12.8,56.2,-34.9,41.7C-57.1,27.1,-73.9,-1.2,-67.2,-23.8C-60.5,-46.4,-30.2,-63.2,-0.2,-63.2C29.9,-63.1,59.8,-46.1,66.8,-23.1Z");
+  }
+  25%  {
+    d:path("M43.6,-9.9C52.9,14.5,54.4,45.7,36.2,61.7C18,77.8,-19.9,78.7,-42.4,61.6C-64.8,44.5,-71.9,9.4,-62.2,-15.4C-52.6,-40.3,-26.3,-54.9,-4.6,-53.4C17.2,-51.9,34.3,-34.3,43.6,-9.9Z");
+  }
+  50% {
+    d:path("M47.4,-19.4C52.3,-0.2,41,20.2,21,36.5C1.1,52.7,-27.3,64.7,-42.6,54.6C-57.9,44.4,-60.1,12.1,-50.8,-13.1C-41.5,-38.3,-20.8,-56.3,0.2,-56.4C21.2,-56.5,42.5,-38.6,47.4,-19.4Z");
+  }
+  75% {
+    d:path("M60.5,-25.8C66.4,-1.4,51,23.8,32.3,35.2C13.6,46.5,-8.3,44.1,-28.1,31.4C-47.8,18.8,-65.4,-4.1,-60.3,-27.2C-55.3,-50.3,-27.6,-73.7,-0.2,-73.7C27.3,-73.6,54.6,-50.1,60.5,-25.8Z");
+  }
+  100% {
+    d:path("M66.8,-23.1C73.8,-0.1,58,28.9,36.3,43C14.6,57.1,-12.8,56.2,-34.9,41.7C-57.1,27.1,-73.9,-1.2,-67.2,-23.8C-60.5,-46.4,-30.2,-63.2,-0.2,-63.2C29.9,-63.1,59.8,-46.1,66.8,-23.1Z");
+  }
 }

@@ -18,9 +18,9 @@ export default ({ children, color, close }: NotificationProps) => {
         <div className="level-right">
           <div className="level-item">
             <a
-              className="close"
+              className="button-text"
               onClick={close}
-            >X</a>
+            >&#10005;</a>
           </div>
         </div>
       </nav>

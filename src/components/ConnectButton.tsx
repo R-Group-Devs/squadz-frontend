@@ -6,6 +6,8 @@ import MetaMaskSVG from '../assets/images/metamask-fox.svg'
 import WalletConnectSVG from '../assets/images/walletconnect-logo.svg'
 import WalletLinkLogo from '../assets/images/coinbase-wallet.png'
 import Button from './Button'
+import CopyButton from './CopyButton'
+import useNotifications from '../hooks/useNotifications'
 import useNetwork from "../hooks/useNetwork";
 
 const connectorImgs = [MetaMaskSVG, WalletConnectSVG, WalletLinkLogo]
@@ -34,6 +36,7 @@ export default () => {
   const [{ data: { chain } }] = useWalletNetwork()
   const [network,] = useNetwork()
   const [mismatch, setMismatch] = useState<boolean>(false)
+  const { addNotification } = useNotifications()
 
   useEffect(() => {
     if (chain !== undefined && chain.name !== network) {
@@ -47,12 +50,15 @@ export default () => {
     <div>
       {accountData?.connector?.ready ?
         <div className="row center">
-          <span className="is-size-6 pr-2">{
-            accountData.ens ?
-              accountData.ens.name
-              :
-              shortAddress(accountData.address)
-          }</span>
+          <span className="is-size-6 pr-2">
+            {
+              accountData.ens ?
+                accountData.ens.name
+                :
+                shortAddress(accountData.address)
+            }
+            <CopyButton str={accountData.address} addNotification={addNotification} />
+          </span>
           <Button
             text="Disconnect"
             scale={1}

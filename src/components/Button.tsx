@@ -8,7 +8,7 @@ export type ButtonSize = 1 | 2 | 3
 interface ButtonProps {
   text: string;
   scale: ButtonSize;
-  widthPx: number;
+  widthPx?: number;
   green?: boolean;
   centered?: boolean;
   callback?: MouseEventHandler<HTMLImageElement>;
@@ -30,7 +30,7 @@ export default ({ text, scale, widthPx, green, centered, callback }: ButtonProps
   if (callback === undefined) callback = () => { }
   let ellipse = pinkEllipse
   if (green) ellipse = greenEllipse
-  let width: number | string = widthPx
+  let width: number | string = widthPx ?? "100%"
   let margin: number | string = 0
   if (centered) {
     width = "100%"
@@ -40,18 +40,18 @@ export default ({ text, scale, widthPx, green, centered, callback }: ButtonProps
   return (
     <div
       className="container button-container has-text-centered"
-      style={{ height: heights[scale], width, margin }}
+      style={{ height: heights[scale], width: widthPx, margin }}
     >
       <img
         className="button-image"
-        style={{ height: heights[scale], width: widthPx }}
+        style={{ height: heights[scale], width }}
         src={ellipse}
         alt="Pink ellipse"
         onClick={callback}
       />
       <div
         className={`button-text in-ellipse has-text-white is-size-${sizes[scale]}`}
-        style={{ width: widthPx }}
+        style={{ width }}
         onClick={callback}
       >
         {text}

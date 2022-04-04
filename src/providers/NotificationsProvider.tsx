@@ -12,13 +12,15 @@ const emptyNotifs: Notifications = {
   status: {}
 }
 
+export type AddNotificationFunction = (
+  type: "errors" | "warnings" | "status",
+  element: ReactElement,
+  key: string
+) => void
+
 interface INotificationsContext {
   notifications: Notifications,
-  addNotification: (
-    type: "errors" | "warnings" | "status",
-    element: ReactElement,
-    key: string
-  ) => void,
+  addNotification: AddNotificationFunction,
   removeNotification: (type: "errors" | "warnings" | "status", key: string) => void
 }
 

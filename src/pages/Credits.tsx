@@ -2,7 +2,7 @@ import fontCredits from '../assets/fonts/credits.json'
 
 const softwareCredits = {
   "shell": "heyshell.xyz",
-  "Blob SVG": "@Smitche on codepen.io"
+  "Blob SVG": "codepen.io/Smitche/pen/MowNba"
 }
 
 const sponsorCredits = {
