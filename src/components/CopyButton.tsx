@@ -5,7 +5,6 @@ interface CopyButtonProps { str?: string, addNotification: AddNotificationFuncti
 
 export default ({ str, addNotification }: CopyButtonProps) => {
   if (str === undefined) return <></>
-  console.log(window.innerWidth, str.length)
   if (window.innerWidth < 600 && str.length > 20) {
     str = shortAddress(str)
   }

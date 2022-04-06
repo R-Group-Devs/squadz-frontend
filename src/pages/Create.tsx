@@ -62,7 +62,7 @@ export default () => {
       <div className="container rounded-border green-border" style={{ maxWidth: 680 }}>
         <h3 className={`subtitle is-3 has-text-green has-text-centered mt-4`}>Create Squad</h3>
         <div className="block pb-2">
-          <div className="field mb-5" style={fieldStyle}>
+          <div className="field mb-0" style={fieldStyle}>
             <label className={labelClass} style={{ width: "100%" }}>Connection & Network</label>
             <Connector />
           </div>
@@ -101,6 +101,7 @@ export default () => {
           <Button
             text="Create"
             scale={2}
+            widthPx={250}
             callback={handleCreateCollection}
           />
         </div>
