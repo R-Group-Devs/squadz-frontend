@@ -9,6 +9,7 @@ import ViewSquadsForm from "../components/ViewSquadsForm"
 export default () => {
   const navigate = useNavigate()
   const [{ data },] = useAccount()
+  console.log('use account', data)
 
   return (
     <section className="hero is-fullheight">

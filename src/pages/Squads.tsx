@@ -4,21 +4,24 @@ import { useAccount } from 'wagmi'
 
 import LoadingIndicator from '../components/LoadingIndicator'
 import useSquadsOf from '../hooks/useSquadsOf'
+import useNetwork from '../hooks/useNetwork'
+import { NetworkName } from '../config'
 import { shortAddress, timestampToDate } from '../lib'
 
 export default () => {
   const { address } = useParams()
+  const [network,] = useNetwork()
 
   return (
     <section className="section pt-3">
       <Suspense fallback={<LoadingIndicator />}>
-        <Squads address={address} />
+        <Squads address={address} networkName={network as NetworkName} />
       </Suspense>
     </section>
   )
 }
 
-function Squads({ address }: { address?: string }) {
+function Squads({ address, networkName }: { address?: string, networkName: NetworkName }) {
   const [{ data: account },] = useAccount()
   const navigate = useNavigate()
   const { data: squads } = useSquadsOf(address)
@@ -48,6 +51,7 @@ function Squads({ address }: { address?: string }) {
               usedForkIds.push(f.id)
               return <SquadCard
                 key={f.collection.address}
+                networkName={networkName}
                 collectionAddress={f.collection.address}
                 forkId={f.forkId}
                 collectionName={f.collection.name}
@@ -62,6 +66,7 @@ function Squads({ address }: { address?: string }) {
               // TODO get data on lastTokenOf for these squads to check if admin
               return <SquadCard
                 key={f.collection.address}
+                networkName={networkName}
                 collectionAddress={f.collection.address}
                 forkId={f.forkId}
                 collectionName={f.collection.name}
@@ -82,6 +87,7 @@ function Squads({ address }: { address?: string }) {
 }
 
 interface SquadCardProps {
+  networkName: NetworkName;
   collectionAddress: string;
   forkId: number;
   collectionName: string;
@@ -90,10 +96,10 @@ interface SquadCardProps {
   updatedAt: number;
 }
 
-function SquadCard({ collectionAddress, forkId, collectionName, role, nftCount, updatedAt }: SquadCardProps) {
+function SquadCard({ networkName, collectionAddress, forkId, collectionName, role, nftCount, updatedAt }: SquadCardProps) {
   return (
     <div className="block rounded-border pink-border max-width" key={collectionAddress}>
-      <Link to={`/squad/${collectionAddress}/${forkId}`}>
+      <Link to={`/squad/${networkName}/${collectionAddress}/${forkId}`}>
         <div className="is-Karrik is-size-4 has-text-pink">{collectionName}</div>
         {role !== undefined && <div className="is-size-5 is-italic has-text-pink">{role}</div>}
         <div className="block has-text-black">

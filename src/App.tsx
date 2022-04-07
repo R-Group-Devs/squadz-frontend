@@ -37,7 +37,7 @@ function App() {
                     <Route path="/credits" element={<Credits />} />
                     <Route path="/create" element={<Create />} />
                     <Route path="/squads/:address" element={<Squads />} />
-                    <Route path="/squad/:collectionAddress/:forkNumber" element={<Squad />} />
+                    <Route path="/squad/:networkName/:collectionAddress/:forkNumber" element={<Squad />} />
 
                     <Route path="*" element={<FourOhFour />} />
                   </Routes>

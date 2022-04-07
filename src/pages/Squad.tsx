@@ -1,5 +1,5 @@
-import { Suspense } from "react"
-import { useParams } from "react-router-dom"
+import { Suspense, useEffect, useState } from "react"
+import { useParams, useNavigate } from "react-router-dom"
 import { useAccount } from "wagmi"
 
 import LoadingIndicator from "../components/LoadingIndicator"
@@ -12,11 +12,39 @@ import useMembersOf from "../hooks/useMembersOf"
 import useMemberInfoOf from "../hooks/useMemberInfoOf"
 import { makeForkId, shortString } from "../lib"
 import useSquadConfigOf from "../hooks/useSquadConfigOf"
+import useNetwork from "../hooks/useNetwork"
+import { networks, NetworkName } from "../config"
 
 export default () => {
-  const { collectionAddress, forkNumber } = useParams()
+  const { networkName, collectionAddress, forkNumber } = useParams()
+  const [network, setNetwork] = useNetwork()
   let forkNumberInt: number | undefined
   if (forkNumber !== undefined) forkNumberInt = parseInt(forkNumber)
+  const navigate = useNavigate()
+  const [ready, setReady] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (
+      networkName !== undefined &&
+      Object.keys(networks).includes(networkName as NetworkName) &&
+      networkName === network
+    ) {
+      setReady(true)
+    } else if (
+      networkName === undefined ||
+      !Object.keys(networks).includes(networkName as NetworkName)
+    ) {
+      navigate({ pathname: "/404" }), [network, networkName]
+    } else if (networkName !== network) {
+      setNetwork(networkName)
+    }
+  }, [network, networkName])
+
+  if (!ready) return (
+    <section className="section pt-3">
+      <LoadingIndicator />
+    </section>
+  )
 
   return (
     <section className="section pt-3">
