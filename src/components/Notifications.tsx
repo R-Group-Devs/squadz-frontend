@@ -13,7 +13,7 @@ export default () => {
   }
 
   return (
-    <div className="container pl-4 pb-3">
+    <div className="container pl-4 pb-3 pt-3">
       <NotificationBlock
         notifications={notifications.errors}
         notificationType="errors"

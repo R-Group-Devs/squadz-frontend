@@ -17,7 +17,7 @@ export default ({ connector }: { connector: boolean }) => {
       </div>
       <div className="level-right">
         <div className={`level-item ${levelItemPadding}`}>
-          {connector && <Connector />}
+          {connector && <Connector extraspace={false} />}
         </div>
       </div>
     </nav>

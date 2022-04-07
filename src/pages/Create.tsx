@@ -64,7 +64,7 @@ export default () => {
         <div className="block pb-2">
           <div className="field mb-0" style={fieldStyle}>
             <label className={labelClass} style={{ width: "100%" }}>Connection & Network</label>
-            <Connector />
+            <Connector extraspace={true} />
           </div>
           <div className="field mb-5" style={fieldStyle}>
             <label className={labelClass}>Name</label>
