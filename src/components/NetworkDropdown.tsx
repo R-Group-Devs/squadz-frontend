@@ -1,6 +1,6 @@
 import { useState, ReactElement } from 'react'
 
-import { networks } from '../config'
+import { networks, NetworkName } from '../config'
 import useNetwork from '../hooks/useNetwork'
 
 export default () => {
@@ -27,7 +27,7 @@ export default () => {
             Network:
           </div>
           <span className="row space-between">
-            <span className={classStyle}>{network}&nbsp;</span>
+            <span className={classStyle}>{networks[network as NetworkName].nickname}&nbsp;</span>
             {arrow}
           </span>
         </span>
@@ -41,7 +41,7 @@ export default () => {
                 key={name}
                 onClick={() => { setNetwork(name); toggleDropdown() }}
               >
-                {name}
+                {networks[name as NetworkName].nickname}
               </span>
             )
           })}

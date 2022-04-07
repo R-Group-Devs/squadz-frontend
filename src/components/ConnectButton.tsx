@@ -9,6 +9,7 @@ import Button from './Button'
 import CopyButton from './CopyButton'
 import useNotifications from '../hooks/useNotifications'
 import useNetwork from "../hooks/useNetwork";
+import { networks, NetworkName } from '../config'
 
 const connectorImgs = [MetaMaskSVG, WalletConnectSVG, WalletLinkLogo]
 
@@ -78,7 +79,7 @@ export default () => {
       }
       {mismatch && chain !== undefined &&
         <div className="is-size-7 has-text-red" style={{ position: "absolute" }}>
-          {`Mismatch: connected to ${chain.name}`}
+          {`Mismatch: connected to ${networks[chain.name as NetworkName]?.nickname ?? chain.name}`}
         </div>
       }
       <div className={`modal ${modalActive}`}>
