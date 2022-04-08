@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bulma'
 import './App.css'
-import './blob.css'
 
 /* Polyfills */
 import { Buffer } from 'buffer';
