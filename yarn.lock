@@ -9,6 +9,14 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
+"@areatechnology/shields-react@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@areatechnology/shields-react/-/shields-react-0.1.2.tgz#1986c6eec62241653230721c5ecd614ef637223b"
+  integrity sha512-hIxdgkpvEE/o5MyD1qji4JmXstlD5H9y6r7aW09vKcgpQ7CVJNkMHV/tiGdioPtYgzRGU+FZjSkpH5hi2vjrVA==
+  dependencies:
+    graphql "^16.3.0"
+    graphql-request "^4.0.0"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.7":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.16.7.tgz#44416b6bd7624b998f5b1af5d470856c40138789"

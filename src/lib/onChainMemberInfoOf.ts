@@ -20,6 +20,7 @@ export interface MemberInfo {
   active: boolean;
   admin: boolean;
   power: number;
+  latestTokenId: number;
   totalMemberships: number;
   latestTokenTime: number;
   uri: string;
@@ -49,6 +50,7 @@ export async function onChainMemberInfoOf(
     return {
       active: rawMemberInfo.active,
       admin: rawMemberInfo.admin,
+      latestTokenId: rawMemberInfo.latestTokenId.toNumber(),
       totalMemberships: rawMemberInfo.forkBalance.toNumber(),
       power: rawMemberInfo.power.toNumber(),
       latestTokenTime: rawMemberInfo.latestTokenTime.toNumber(),
