@@ -3,7 +3,7 @@ import { TransactionResponse } from "@ethersproject/providers"
 
 import useNetwork from "../hooks/useNetwork"
 import useNotifications from "../hooks/useNotifications"
-import { shortString, timestampToNumbers, resolveTx } from "../lib"
+import { shortString, secondsToTime, resolveTx } from "../lib"
 import useContractWritable from '../hooks/useContractWritable'
 import { networks, NetworkName } from "../config"
 import SquadzEngineAbi from "../abis/SquadzEngine.json"
@@ -94,7 +94,7 @@ export default ({
       {(!owner && adminUser !== undefined && adminUser && cooldownLeft > 0) ?
         <div className="level-item">
           <a className="circle-button button-text disabled has-text-weight-bold">&#65291;</a>
-          <div className="is-size-7 has-text-grey pl-1">({timestampToNumbers(cooldownLeft)})</div>
+          <div className="is-size-7 has-text-grey pl-1">({secondsToTime(cooldownLeft)})</div>
         </div>
         :
         <div className="level-item">

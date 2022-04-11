@@ -1,5 +1,6 @@
-export function timestampToTimeString(timestamp?: number): string | undefined {
+export function secondsToTimeString(timestamp?: number): string | undefined {
   if (timestamp === undefined) return
+  if (timestamp === 0) return "0 seconds"
   const years = Math.floor(timestamp / (60 * 60 * 24 * 365))
   if (years > 0) timestamp -= years * 60 * 60 * 24 * 365
   const days = Math.floor(timestamp / (60 * 60 * 24))

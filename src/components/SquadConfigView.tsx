@@ -1,7 +1,7 @@
 import { SquadConfigBoxProps } from './SquadConfigBox'
 import Button from "../components/Button"
 import ShortAddress from "../components/ShortAddress"
-import { shortAddress, timestampToTimeString } from "../lib"
+import { shortAddress, secondsToTimeString } from "../lib"
 
 export interface SquadConfigSubProps extends SquadConfigBoxProps {
   setEditing: (editing: boolean) => void;
@@ -23,7 +23,7 @@ export default ({ owner, squadConfig, user, setEditing }: SquadConfigSubProps) =
           <div className="level-left">
             <span className="level-item mr-1">{`Memberships stay active for `}</span>
             <span className="level-item">
-              <span className="rounded-border">{timestampToTimeString(squadConfig?.expiry)}</span>
+              <span className="rounded-border">{secondsToTimeString(squadConfig?.expiry)}</span>
             </span>
           </div>
         </div>
@@ -31,7 +31,7 @@ export default ({ owner, squadConfig, user, setEditing }: SquadConfigSubProps) =
           <div className="level-left">
             <span className="level-item mr-1">{`Admins can mint every `}</span>
             <span className="level-item">
-              <span className="rounded-border">{timestampToTimeString(squadConfig?.cooldown)}</span>
+              <span className="rounded-border">{secondsToTimeString(squadConfig?.cooldown)}</span>
             </span>
           </div>
         </div>

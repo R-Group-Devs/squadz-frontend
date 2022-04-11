@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { TransactionResponse } from "@ethersproject/providers"
+import { MaxUint256 } from '@ethersproject/constants'
 
 import Button from "../components/Button"
 import { SquadConfigSubProps } from './SquadConfigView'
@@ -97,13 +98,15 @@ export default ({ owner, squadConfig, user, setEditing }: SquadConfigSubProps) =
         )
         return
       }
+
       engine.setCollectionConfig(
         collectionAddress,
         parseInt(forkNumber),
         formExpiry,
-        formCooldown,
-        formBonus,
-        formMax,
+        // setting these to MaxUint256 is treated as 0 by the contract, since setting to 0 doesn't work
+        formCooldown === 0 ? MaxUint256 : formCooldown,
+        formBonus === 0 ? MaxUint256 : formBonus,
+        formMax === 0 ? MaxUint256 : formMax,
         formSvg
       )
         .then((res: TransactionResponse) => {

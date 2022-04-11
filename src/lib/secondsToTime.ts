@@ -1,4 +1,4 @@
-export function timestampToNumbers(seconds: number): string {
+export function secondsToTime(seconds: number): string {
   let minutes = Math.floor(seconds / 60)
   const hours = Math.floor(minutes / 60)
   seconds = seconds - (minutes * 60)
