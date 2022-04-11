@@ -21,5 +21,5 @@ Much has been written on the [faults](https://vitalik.ca/general/2021/08/16/voti
 - Squadz is unopinionated about why tokens are being minted
 
 # Links
-- [How it works](/how-it-works.md)
-- [Integrations](/integrations.md)
+- [How it works](how-it-works.md)
+- [Integrations](integrations.md)
