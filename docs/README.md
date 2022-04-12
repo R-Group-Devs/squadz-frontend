@@ -9,7 +9,7 @@ Squadz is a protocol for managing *composable communities*: social groups made i
 
 It is deployed on multiple chains including Goerli, Rinkeby, Polygon, and Polygon Mumbai.
 
-## Why should I care?
+## Why should I care?s
 ### Composability
 It's easy to integrate your squad with other software tools: use [Snapshot](https://snapshot.org/) for community voting, create a members-only discord server with [Guild](https://guild.xyz/), and so on. 
 
