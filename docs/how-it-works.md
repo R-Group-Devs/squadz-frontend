@@ -1,5 +1,9 @@
 # How SQUADZ Works
 
+## Links
+- [Home](README.md)
+- [Integrations](integrations.md)
+
 SQUADZ is built on the [shell hyperstructure](https://heyshell.xyz). 
 
 ## Launching
