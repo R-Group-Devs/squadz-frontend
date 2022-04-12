@@ -7,7 +7,7 @@ export default () => {
     <nav className="level footer">
       <div className="level-left">
         <div className={levelItemClassStyle}>
-          <a href="https://github.com/R-Group-Devs/squadz-frontend/blob/567e2dc4d22f74f4f5f58ac746e8a8464da7bef0/docs/README.md" target="_blank">
+          <a href="https://github.com/R-Group-Devs/squadz-frontend/blob/main/docs/README.md" target="_blank">
             <span className="has-text-pink">docs</span>
           </a>
         </div>
